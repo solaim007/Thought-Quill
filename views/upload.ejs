@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Add Profile Photo</title>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-3">
+      <form action="/blog/user" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="profileImage" class="form-label">Profile Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="profileImage"
+            name="profileImage"
+            aria-describedby="profileImage"
+          />
+        </div>
+
+        <div class="mb-3">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>
