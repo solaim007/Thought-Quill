@@ -23,7 +23,26 @@ router.get("/add-new",(req,res)=>{
         user:req.user,
     })
 })
-
+router.get("/myBlog", async (req, res) => {
+    try {
+        const blogs = await Blog.find({ createdBy: req.user._id }).populate("createdBy");
+        res.render("myBlog", {
+            user:req.user,
+            blogs,
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+router.post("/delete/:id", async (req, res) => {
+    await Blog.findByIdAndDelete(req.params.id);
+    const blogs = await Blog.find({ createdBy: req.user._id }).populate("createdBy");
+    return res.render("myBlog", {
+        user: req.user,
+        blogs,
+    });
+})
 router.get("/:id", async(req,res)=>{
     const blog = await Blog.findById(req.params.id).populate("createdBy");
     const comments = await Comment.find({blogId:req.params.id}).populate("createdBy");

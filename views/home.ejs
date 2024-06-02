@@ -6,15 +6,15 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <div class="container mt-3">
-        <div class="row row-cols-4">
+    <div class="container mt-3 ">
+        <div class="row row-cols-3 mb-3">
           <% blogs.forEach(blog => { %>
           <div class="col">
             <div class="card col" style="width: 18rem">
-              <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+              <img height="200rem" src="<%= blog.coverImageURL %>" class="object-fit-cover card-img-top" />
               <div class="card-body">
                 <h5 class="card-title"><%= blog.title %></h5>
-                <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                <a href="/blog/<%= blog._id %>" class="btn btn-secondary">View</a>
               </div>
             </div>
           </div>
