@@ -21,12 +21,12 @@ const app = express();
 //   .catch((err) => {
 //     console.log(err);
 //   });
-
+const URI = process.env.MONGO_URI;
 async function connectMongoose() {
     try {
 
-        const response = await mongoose.connect("mongodb://localhost:27017/blogify");
-        console.log(response.models);
+        const response = await mongoose.connect(URI);
+        console.log("Mongoose Connected Successfully");
     } catch(error) {
         console.error(error);
     }
